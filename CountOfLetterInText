@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+using namespace std;
+string ReadText()
+{
+	string text = " ";
+	cout << "Enter text: ";
+	getline(cin, text);
+	return text;
+}
+char ReadChar()
+{
+	char chr = ' ';
+	cout << "Enter a character: ";
+	cin >> chr;
+	return chr;
+}
+int CountOfLetterInText(string str, char chr)
+{
+	short Counter = 0;
+	for (short i = 0; i < str.size(); i++)
+	{
+		if (str[i] == chr)
+			Counter++;
+	}
+	return Counter;
+}
+int main()
+{
+	string S1 = ReadText();
+	char chr = ReadChar();
+	cout << "Count Of \'"<<chr <<"\' in text is: " << CountOfLetterInText(S1, chr) << endl;
+	return 0;
+}
+
+

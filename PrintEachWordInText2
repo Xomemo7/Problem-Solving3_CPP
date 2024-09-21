@@ -1,0 +1,29 @@
+#include <iostream>
+#include <string>
+using namespace std;
+string ReadText()
+{
+	string text = " ";
+	cout << "Enter text: ";
+	getline(cin, text);
+	return text;
+}
+void PrintEachWordInText(string str)
+{
+	for (short i = 0; i < str.size(); i++)
+	{
+		if (str[i] != ' ')
+			cout << str[i];
+		else if (str[i] == ' ' && i != 0 && str[i - 1] != ' ')
+			cout << endl;
+	}
+	cout << endl;
+}
+int main()
+{
+	string str = ReadText();
+	PrintEachWordInText(str);
+	return 0;
+}
+
+

@@ -1,0 +1,46 @@
+#include <iostream>
+#include<iomanip>
+using namespace std;
+void FillMatrixWithOrderedNumbers(int Matrix[3][3],int Rows,int Columns)
+{
+	int Counter = 0;
+	for (int i = 0; i < Rows; i++)
+		for (int j = 0; j < Columns; j++)
+		{
+			Counter++;
+			Matrix[i][j] = Counter;
+		}	
+}
+void TransposeMatrix(int MatrixTranspose[3][3],int Matrix[3][3], int Rows, int Columns)
+{
+
+	for (int i = 0; i < Rows; i++)
+		for (int j = 0; j < Columns; j++)
+			MatrixTranspose[j][i] = Matrix[i][j];
+}
+void PrintMatrix(int Matrix[3][3], int Rows, int Columns)
+{
+	for (int i = 0; i < Rows; i++)
+	{
+		for (int j = 0; j < Columns; j++)
+			cout <<setw(3)<< Matrix[i][j]<<"  ";
+		cout << endl;
+	}
+}
+int main()
+{	
+	int Matrix[3][3];
+	int MatrixTranspose[3][3];
+
+	FillMatrixWithOrderedNumbers(Matrix,3,3);
+	PrintMatrix(Matrix,3,3);
+
+	cout << endl;
+
+	TransposeMatrix(MatrixTranspose, Matrix, 3, 3);
+	PrintMatrix(MatrixTranspose, 3, 3);
+	
+	return 0;
+}
+
+

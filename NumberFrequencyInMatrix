@@ -1,0 +1,59 @@
+#include <iostream>
+#include<iomanip>
+using namespace std;
+int ReadPositiveNumber(string Message)
+{
+	int Number = 0;
+	do
+	{
+		cout << Message << endl;
+		cin >> Number;
+	} while (Number < 0);
+	return Number;
+}
+int RandomNumber(int From, int To)
+{
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+void FillMatrixWithRandomNumbers(int Matrix[3][3], int Rows, int Columns)
+{
+	for (int i = 0; i < Rows; i++)
+		for (int j = 0; j < Columns; j++)
+			Matrix[i][j] = RandomNumber(1, 10);
+}
+void PrintMatrix(int Matrix[3][3], int Rows, int Columns)
+{
+	for (int i = 0; i < Rows; i++)
+	{
+		for (int j = 0; j < Columns; j++)
+			printf("%02d  ", Matrix[i][j]);
+		cout << endl;
+	}
+	cout << endl;
+}
+int CountOfNumberFrequency(int Matrix[3][3], int Rows, int Columns,int NumberToCheckFrequency)
+{
+	int Counter = 0;
+	for (int i = 0; i < Rows; i++)
+		for (int j = 0; j < Columns; j++)
+			if (Matrix[i][j] == NumberToCheckFrequency)
+				Counter++;
+	return Counter;
+}
+int main()
+{
+	srand((unsigned)time(NULL));
+	int Matrix[3][3],NumberToCheckFrequency=0;
+	
+	cout << "Matrix1:\n";
+	FillMatrixWithRandomNumbers(Matrix, 3, 3);
+	PrintMatrix(Matrix, 3, 3);
+	NumberToCheckFrequency=ReadPositiveNumber("Enter Number to check its frequency: ");
+	
+	cout << "Number " << NumberToCheckFrequency << " count in matrix= " << CountOfNumberFrequency(Matrix, 3, 3, NumberToCheckFrequency);
+
+	return 0;
+}
+
+

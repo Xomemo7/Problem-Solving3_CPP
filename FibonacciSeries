@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+void PrintFibonacciUsingLoop(int SeriesLength)
+{
+	int Number=0,PrevNum1=1,PrevNum2=0;
+	cout << "1\n";
+	for (int i = 2; i <= SeriesLength; i++)
+	{
+		Number = PrevNum1 + PrevNum2;
+		cout << Number << endl;
+		PrevNum2 = PrevNum1;
+		PrevNum1 = Number;
+	}
+}
+
+int main()
+{
+	PrintFibonacciUsingLoop(10);
+	
+	return 0;
+}
+
+

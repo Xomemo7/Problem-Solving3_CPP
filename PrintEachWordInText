@@ -1,0 +1,37 @@
+#include <iostream>
+#include <string>
+using namespace std;
+string ReadText()
+{
+	string text = " ";
+	cout << "Enter text: ";
+	getline(cin, text);
+	return text;
+}
+void PrintEachWordInText(string str)
+{
+	string delim = " ";
+	cout << "\nYour string words are: \n\n";
+	short pos = 0;
+	string sWord;
+	while ((pos = str.find(delim)) != std::string::npos)
+	{
+		sWord = str.substr(0, pos);
+		if (sWord != "")
+		{
+			cout << sWord << endl;
+		}
+		str.erase(0, pos + delim.length());
+
+	}
+	if (str != "")
+		cout << str << endl;
+}
+int main()
+{
+	string str = ReadText();
+	PrintEachWordInText(str);
+	return 0;
+}
+
+

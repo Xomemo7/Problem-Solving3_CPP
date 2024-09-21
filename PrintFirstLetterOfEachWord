@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+using namespace std;
+string ReadString()
+{
+	string Text=" ";
+	cout << "Enter Text: ";
+	getline( cin,Text);
+	return Text;
+}
+void FirstLetter(string str)
+{
+	bool isFirstLetter = true;
+	int i = 0;
+	do
+	{
+		if (isFirstLetter && str[i]!=' ')
+			cout << str[i] << endl;
+		isFirstLetter = (str[i] == ' ' ? true : false);
+		i++;
+	}while(i<str.size());
+	
+}
+int main()
+{
+	string str = ReadString();
+	FirstLetter(str);
+	return 0;
+}
+
+

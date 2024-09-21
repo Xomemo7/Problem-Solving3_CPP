@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+using namespace std;
+string ReadText()
+{
+	string text = " ";
+	cout << "Enter text: ";
+	getline(cin, text);
+	return text;
+}
+bool isVowel(char chr)
+{
+	chr = tolower(chr);
+	return(chr == 'a' || chr == 'i' || chr == 'o' || chr == 'u' || chr == 'e');
+}
+void PrintVowelsInText(string str)
+{
+	cout << "Vowels in text: \n";
+	for (short i = 0; i < str.size(); i++)
+	{
+		if (isVowel(str[i]))
+			cout << str[i] << "  ";			
+	}
+	cout << endl;
+}
+int main()
+{
+	string str = ReadText();
+	PrintVowelsInText(str);
+	return 0;
+}
+
+

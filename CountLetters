@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+using namespace std;
+enum enWhatToCount{SmallLetters,CapitalLetters,All};
+string ReadText()
+{
+	string text = " ";
+	cout << "Enter text: ";
+	getline(cin, text);
+	return text;
+}
+short CountLetters(string str, enWhatToCount WhatToCount=All)
+{
+	if (WhatToCount == SmallLetters)
+	{
+		short SmallCount=0;
+		for (short i = 0; i < str.size(); i++)
+		{
+			if (islower(str[i]))
+				SmallCount++;
+		}
+		return SmallCount;
+	}
+	else if(WhatToCount == CapitalLetters)
+	{
+		short CapitalCount = 0;
+		for (short i = 0; i < str.size(); i++)
+		{
+			if (isupper(str[i]))
+				CapitalCount++;
+		}
+		return CapitalCount;
+	}
+	else
+	{
+		short AllCount = 0;
+		for (short i = 0; i < str.size(); i++)
+		{
+			if (isupper(str[i]) || islower(str[i]))
+				AllCount++;
+		}
+		return AllCount;
+	}
+}
+int main()
+{
+	string S1 = ReadText();
+	cout << "String length= " << S1.size()<<endl;
+	cout << "Capital letters count= " << CountLetters(S1,CapitalLetters) << endl;
+	cout << "Small letters count= " << CountLetters(S1,SmallLetters) << endl;
+	cout << "All letters count= " << CountLetters(S1) << endl;
+	return 0;
+}
+
+

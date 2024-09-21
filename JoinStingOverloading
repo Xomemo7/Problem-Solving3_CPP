@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+string JoinString(vector <string> vString,string Delim)
+{
+	string WholeString="";
+	for (string& i : vString)
+	{
+			WholeString = WholeString + i + Delim;
+	}
+	return WholeString.substr(0, WholeString.size()-Delim.size());
+}
+string JoinString(string arrString[],int arrLength, string Delim)
+{
+	string WholeString = "";
+	for (int i=0;i<arrLength;i++)
+	{
+		WholeString = WholeString + arrString[i] + Delim;
+	}
+	return WholeString.substr(0, WholeString.size() - Delim.size());
+}
+int main()
+{
+	vector <string> vNames = { "Omar","Ali","Aahmad","Mohammad","Mahmoud" };
+	string arrNames[] = { "Omar","Ali","Aahmad","Mohammad","Mahmoud" };
+	cout<<"Join string using vector:\n" << JoinString(vNames, ",*,")<<endl;
+	cout << endl;
+	cout << "Join string using array:\n" << JoinString(arrNames, 5,"--")<<endl;
+	return 0;
+}
+
+

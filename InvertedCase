@@ -1,0 +1,23 @@
+#include <iostream>
+#include <string>
+using namespace std;
+char Readchar()
+{
+	char chr=' ';
+	cout << "Enter character: ";
+	cin >> chr;
+	return chr;
+}
+char InvertLetterCase(char chr)
+{
+	return isupper(chr) ? char(tolower(chr)) : char(toupper(chr));
+}
+int main()
+{
+	char chr = Readchar();
+	cout<<InvertLetterCase(chr)<<endl;
+
+	return 0;
+}
+
+

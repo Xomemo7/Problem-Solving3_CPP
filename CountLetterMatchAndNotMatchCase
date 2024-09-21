@@ -1,0 +1,51 @@
+#include <iostream>
+#include <string>
+using namespace std;
+enum enLetterCase{MatchCase,NotMatchCase};
+string ReadText()
+{
+	string text = " ";
+	cout << "Enter text: ";
+	getline(cin, text);
+	return text;
+}
+char ReadChar()
+{
+	char chr = ' ';
+	cout << "Enter a character: ";
+	cin >> chr;
+	return chr;
+}
+char InvertLetterCase(char chr)
+{
+	return isupper(chr) ? char(tolower(chr)) : char(toupper(chr));
+}
+int CountOfLetterInText(string str, char chr, enLetterCase LetterCase=MatchCase)
+{
+	short Counter = 0;
+	for (short i = 0; i < str.size(); i++)
+	{
+		if (LetterCase == MatchCase)
+		{
+			if (str[i] == (chr))
+				Counter++;
+		}
+		else
+		{
+			if (tolower(str[i])==tolower(chr))
+				Counter++;
+		}
+	}
+	return Counter;
+}
+int main()
+{
+	string S1 = ReadText();
+	char chr = ReadChar();
+	cout << "Count Of \'"<<chr <<"\' in text is: " << CountOfLetterInText(S1, chr) << endl;//Match case
+	cout << "Count Of \'" << chr << "\' or \'"<< InvertLetterCase(chr) <<"\' in text is: " << CountOfLetterInText(S1, chr,NotMatchCase) << endl;//Not Match case
+	
+	return 0;
+}
+
+

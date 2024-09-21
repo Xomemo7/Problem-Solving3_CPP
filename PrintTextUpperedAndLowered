@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+using namespace std;
+string ReadString()
+{
+	string Text=" ";
+	cout << "Enter Text: ";
+	getline( cin,Text);
+	return Text;
+}
+string GetTextUppered(string str)
+{
+	for (int i = 0; i < str.size(); i++)
+	{
+		str[i] = char(toupper(str[i]));
+	}
+return str;
+}
+string GetTextLowered(string str)
+{
+	for (int i = 0; i < str.size(); i++)
+	{
+		str[i] = char(tolower(str[i]));
+	}
+	return str;
+}
+int main()
+{
+	string str = ReadString();
+	cout<<GetTextUppered(str)<<endl;
+	cout << GetTextLowered(str) << endl;
+
+	return 0;
+}
+
+

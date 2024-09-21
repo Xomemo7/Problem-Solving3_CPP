@@ -1,0 +1,48 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+struct stClientData
+{
+	string AccountNum = "";
+	string PinCode = "";
+	string Name = "";
+	string PhoneNum = "";
+	double AccountBalance = 0;
+};
+stClientData ReadNewClientData()
+{
+	stClientData Client;
+	cout << "Enter account number:";
+	getline(cin,Client.AccountNum);
+	cout << "Enter PinCode: " ;
+	getline(cin, Client.PinCode);
+	cout << "Enter name:" ;
+	getline(cin, Client.Name);
+	cout << "Enter phone number: ";
+	getline(cin, Client.PhoneNum);
+	cout << "Enter account balance:";
+	cin >> Client.AccountBalance;
+	return Client;
+	
+}
+string ConvertRecordToLine(stClientData Client, string separator = "#//#")
+{
+	string stClientRecord = "";
+	stClientRecord += Client.AccountNum + separator;
+	stClientRecord += Client.PinCode + separator;
+	stClientRecord += Client.Name + separator;
+	stClientRecord += Client.PhoneNum + separator;
+	stClientRecord += to_string(Client.AccountBalance);
+
+	return stClientRecord;
+}
+
+int main()
+{
+	stClientData Client1= ReadNewClientData();
+	cout << ConvertRecordToLine(Client1);
+	return 0;
+}
+
+

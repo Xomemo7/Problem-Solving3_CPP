@@ -1,0 +1,38 @@
+#include <iostream>
+#include <string>
+using namespace std;
+string ReadText()
+{
+	string text = " ";
+	cout << "Enter text: ";
+	getline(cin, text);
+	return text;
+}
+int GetCountEachWordInText(string str)
+	{
+		string delim = " ";
+		int Counter = 0;
+		short pos = 0;
+		string sWord;
+		while ((pos = str.find(delim)) != std::string::npos)
+		{
+			sWord = str.substr(0, pos);
+			if (sWord != "")
+			{
+				Counter++;
+			}
+			str.erase(0, pos + delim.length());
+
+		}
+		if (str != "")
+			Counter++;
+		return Counter;
+	}
+int main()
+{
+	string str = ReadText();
+	cout<<GetCountEachWordInText(str);
+	return 0;
+}
+
+

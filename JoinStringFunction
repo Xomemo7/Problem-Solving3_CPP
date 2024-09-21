@@ -1,0 +1,21 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+string JoinString(vector <string> &vString,string Delim)
+{
+	string WholeString="";
+	for (string& i : vString)
+	{
+			WholeString = WholeString + i + Delim;
+	}
+	return WholeString.substr(0, WholeString.size()-Delim.size());
+}
+int main()
+{
+	vector <string> vNames = { "Omar","Ali","Aahmad","Mohammad","Mahmoud" };
+	cout<<JoinString(vNames, ",*,");
+	return 0;
+}
+
+

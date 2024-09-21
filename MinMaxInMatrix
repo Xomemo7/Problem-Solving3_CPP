@@ -1,0 +1,60 @@
+#include <iostream>
+#include<iomanip>
+using namespace std;
+int RandomNumber(int From, int To)
+{
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+void FillMatrixWithRandomNumbers(int Matrix[3][3], int Rows, int Columns)
+{
+	for (int i = 0; i < Rows; i++)
+		for (int j = 0; j < Columns; j++)
+			Matrix[i][j] = RandomNumber(1, 100);
+}
+void PrintMatrix(int Matrix[3][3], int Rows, int Columns)
+{
+	for (int i = 0; i < Rows; i++)
+	{
+		for (int j = 0; j < Columns; j++)
+			printf("%02d  ", Matrix[i][j]);
+		cout << endl;
+	}
+	cout << endl;
+}
+int MaxNumberInMatrix(int Matrix[3][3], int Rows, int Columns)
+{
+	int MaxNumber = Matrix[0][0];
+	for (int i = 0; i < Rows; i++)
+		for (int j = 0; j < Columns; j++)
+			if (MaxNumber < Matrix[i][j])
+				MaxNumber = Matrix[i][j];
+	return MaxNumber;
+}
+int MinNumberInMatrix(int Matrix[3][3], int Rows, int Columns)
+{
+	int MinNumber = Matrix[0][0];
+	for (int i = 0; i < Rows; i++)
+		for (int j = 0; j < Columns; j++)
+			if (MinNumber > Matrix[i][j])
+				MinNumber = Matrix[i][j];
+	return MinNumber;
+}
+int main()
+{
+	srand((unsigned)time(NULL));
+	int Matrix1[3][3], Matrix2[3][3];
+
+	cout << "Matrix1:\n";
+	FillMatrixWithRandomNumbers(Matrix1, 3, 3);
+	PrintMatrix(Matrix1, 3, 3);
+	
+	cout << "Max number in matrix: ";
+	cout<<MaxNumberInMatrix(Matrix1, 3, 3)<<endl;
+
+	cout << "Minimum number in matrix: ";
+	cout << MinNumberInMatrix(Matrix1, 3, 3) << endl;
+	return 0;
+}
+
+

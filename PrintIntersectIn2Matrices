@@ -1,0 +1,61 @@
+#include <iostream>
+#include<iomanip>
+using namespace std;
+int RandomNumber(int From, int To)
+{
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+void FillMatrixWithRandomNumbers(int Matrix[3][3], int Rows, int Columns)
+{
+	for (int i = 0; i < Rows; i++)
+		for (int j = 0; j < Columns; j++)
+			Matrix[i][j] = RandomNumber(1, 10);
+}
+void PrintMatrix(int Matrix[3][3], int Rows, int Columns)
+{
+	for (int i = 0; i < Rows; i++)
+	{
+		for (int j = 0; j < Columns; j++)
+			printf("%02d  ", Matrix[i][j]);
+		cout << endl;
+	}
+	cout << endl;
+}
+bool CheckNumberExistence(int Matrix[3][3], int Rows, int Columns, int NumberToCheck)
+{
+	for (int i = 0; i < Rows; i++)
+		for (int j = 0; j < Columns; j++)
+			if (Matrix[i][j] == NumberToCheck)
+				return true;
+	return false;
+}
+void IntersectedNumbersIn2Matrices(int Matrix1[3][3], int Matrix2[3][3], int Rows, int Columns)
+{
+	int Number = 0;
+	for (int i = 0; i < Rows; i++)
+		for (int j = 0; j < Columns; j++)
+		{
+			Number = Matrix1[i][j];
+			if (CheckNumberExistence(Matrix2, Rows, Columns, Number))
+				cout << setw(3) << Number << "  ";
+		}
+}
+int main()
+{
+	srand((unsigned)time(NULL));
+	int Matrix1[3][3], Matrix2[3][3];
+
+	cout << "Matrix1:\n";
+	FillMatrixWithRandomNumbers(Matrix1, 3, 3);
+	PrintMatrix(Matrix1, 3, 3);
+	
+	cout << "Matrix2:\n";
+	FillMatrixWithRandomNumbers(Matrix2, 3, 3);
+	PrintMatrix(Matrix2, 3, 3);
+	
+	IntersectedNumbersIn2Matrices(Matrix1, Matrix2, 3, 3);
+	return 0;
+}
+
+

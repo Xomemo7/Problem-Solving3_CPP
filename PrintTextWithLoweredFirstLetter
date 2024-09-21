@@ -1,0 +1,32 @@
+#include <iostream>
+#include <string>
+using namespace std;
+string ReadString()
+{
+	string Text=" ";
+	cout << "Enter Text: ";
+	getline( cin,Text);
+	return Text;
+}
+string GetTextWithLoweredFirstLetter(string str)
+{
+	bool isFirstLetter = true;
+	int i = 0;
+	do
+	{
+		if (isFirstLetter && str[i]!=' ')
+			 str[i]=char(tolower(str[i]));
+		isFirstLetter = (str[i] == ' ' ? true : false);
+		i++;
+	}while(i<str.size());
+return str;
+}
+int main()
+{
+	string str = ReadString();
+	cout<<GetTextWithLoweredFirstLetter(str);
+
+	return 0;
+}
+
+

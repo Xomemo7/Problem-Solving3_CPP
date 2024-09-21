@@ -1,0 +1,48 @@
+#include <iostream>
+#include<iomanip>
+using namespace std;
+int RandomNumber(int From, int To)
+{
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+void FillMatrixWithRandomNumbers(int Matrix[3][3], int Rows, int Columns)
+{
+	for (int i = 0; i < Rows; i++)
+		for (int j = 0; j < Columns; j++)
+			Matrix[i][j] = RandomNumber(1, 10);
+}
+void PrintMatrix(int Matrix[3][3], int Rows, int Columns)
+{
+	for (int i = 0; i < Rows; i++)
+	{
+		for (int j = 0; j < Columns; j++)
+			printf("%02d  ", Matrix[i][j]);
+		cout << endl;
+	}
+}
+int SumOfMatrix(int Matrix[3][3], int Rows, int Columns)
+{
+	int Sum = 0;
+	for (int i = 0; i < Rows; i++)
+		for (int j = 0; j < Columns; j++)
+			Sum += Matrix[i][j];
+	return Sum;
+}
+int main()
+{
+	srand((unsigned)time(NULL));
+	int Matrix[3][3];
+
+	cout << "Matrix:\n";
+	FillMatrixWithRandomNumbers(Matrix, 3, 3);
+	PrintMatrix(Matrix, 3, 3);
+
+	cout << endl;
+
+	cout << "Sum of matrix= "<< SumOfMatrix(Matrix,3,3)<<endl;
+
+	return 0;
+}
+
+
